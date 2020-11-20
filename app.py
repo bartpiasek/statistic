@@ -3,20 +3,21 @@ import inquirer
 # CHOOSE 'CECHA CIĄGŁA, CECHA NASTĘPNA, PUNKTOWA
 options = [
     inquirer.List('cecha', 
-    message = 'Jaka cecha Xi?',
-    choices = ['Punktowa', 'Ciągła', 'Następna'],
+        message = 'Jaka cecha Xi?',
+        choices = ['Punktowa', 'Ciągła', 'Następna'],
     ),
 ]
 answers = inquirer.prompt(options)
 print(answers['cecha'])
 # IF PUNKTOWA - INPUT X  - list
 if answers['cecha'] == 'Punktowa':
-    numberList = []
+    numList = []
 
-    n = int(input("Enter the size of the list "))
+n = int(input("Enter the size of the list "))
 print("\n")
-numberList = list(int(num) for num in input("Enter the list numbers separated by space ").strip().split())[:n]
-print("User List: ", numberList)
+numList = list(int(num) for num in input("Enter the list numbers separated by space ").strip().split())[:n]
+print("User List: ", numList)
+
 
 #IF CIĄGŁA, NASTĘPNA - INPUT (X - Y), (X - Y) - dict
 
