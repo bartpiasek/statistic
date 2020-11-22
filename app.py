@@ -16,23 +16,24 @@ def menu():
     print("\n")
     userList = input_string.split()
     print("User list is: ", userList)
-
     """
     PREP A LIST
     """
+
     def divide_chunks(userList, n):
-        for i in range(0, len(userList), n):
-            yield userList[i:i+n]
-    n = 5
-    cglList = list(divide_chunks(userList, 2))
-    # pktList =
-    
-    if choice == 1:
-        print(pktList)
-        return pktList
-    else:
-        print(cglList)
-        return cglList
+        cglList = userList
+        pktList = userList
+        for i in range(0, len(cglList), n):
+            yield cglList[i:i+n]
+        n = 5
+        cglList = list(divide_chunks(cglList, 2))
+        
+        if choice == 1:
+            print(pktList)
+            return pktList
+        else:
+            print(cglList)
+            return cglList
 
 
 menu()
