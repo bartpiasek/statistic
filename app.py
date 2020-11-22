@@ -1,37 +1,42 @@
+from statistics import mean
 import inquirer
 import statistics
 import numpy as np
 from itertools import islice
 
 # CHOOSE 'CECHA CIĄGŁA, CECHA NASTĘPNA, PUNKTOWA
-options = [
-    inquirer.List('cecha', 
-        message = 'Jaka cecha Xi?',
-        choices = ['Punktowa', 'Ciągła'],
-    ),
-]
-answers = inquirer.prompt(options)
-print(answers['cecha'])
+def menu():
+    """
+    Chose a type of...
+    """
+    options = [
+        inquirer.List('cecha', 
+            message = 'Jaka cecha Xi?',
+            choices = ['Punktowa', 'Ciągła'],
+        ),
+    ]
+    answers = inquirer.prompt(options)
+    print(answers['cecha'])
 
-# IF PUNKTOWA - INPUT X  - list
-def statMenu():
     """
     Menu with stat options and inputs
     """
-    n = int(input("Enter the size of the list: "))
+    input_string = input("Enter a list elements separated by space: ")
     print("\n")
-    numList = list(int(num) for num in input("Enter the list numbers separated by space ").strip().split())[:n]
+    userList = input_string.split()
+    print("User list is: ", userList)
+    return userList
 
-    if answers['cecha'] == 'Punktowa':
-        # numList = list(int(num) for num in input("Enter the list numbers separated by space ").strip().split())[:n]
-        print("User List: ", numList)
-        return numList
-    else:
-        xynumList = iter(numList)
-        xynumList = iter(lambda: tuple(islice(numList, n)), ())
-        print("User List: ", xynumList)
-        return xynumList
-statMenu()
+    # if answers['cecha'] == 'Punktowa':
+    #     print('asdf')
+    # else:
+    #     pass
+
+# IF PUNKTOWA - INPUT X  - list
+
+
+
+menu()
         
     #     final_list = [] 
     #     line = int(input("Enter the list of tuples: "))
@@ -46,17 +51,7 @@ statMenu()
  # else:
    
 
-class Average():
-    """
-    Count avg of pkt or cgl
-    """
-    def avgPkt(numList):
-        AvgDataPkt = statistics.mean(numList)
-        return AvgDataPkt
-    
-    def avgPkt(final_list):
-        AvgDataCgl = statistics.mean(final_list)
-        return AvgDataCgl
+
 
 
 
