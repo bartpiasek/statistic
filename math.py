@@ -1,4 +1,4 @@
-import statistics
+from statistics import mean
 
 class Average():
     """

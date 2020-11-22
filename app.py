@@ -1,60 +1,41 @@
-from statistics import mean
-import inquirer
-import statistics
-import numpy as np
-from itertools import islice
 
-# CHOOSE 'CECHA CIĄGŁA, CECHA NASTĘPNA, PUNKTOWA
+# CHOOSE 'CECHA CIĄGŁA, CECHA PUNKTOWA'
 def menu():
     """
-    Chose a type of...
+    MENU
     """
-    options = [
-        inquirer.List('cecha', 
-            message = 'Jaka cecha Xi?',
-            choices = ['Punktowa', 'Ciągła'],
-        ),
-    ]
-    answers = inquirer.prompt(options)
-    print(answers['cecha'])
+    print("Choose a type of stat: ")
+    print("\n")
+    print("1. - Punktowa, 2. - Ciągła")
+    choice = input()
 
     """
-    Menu with stat options and inputs
+    INPUT
     """
     input_string = input("Enter a list elements separated by space: ")
     print("\n")
     userList = input_string.split()
     print("User list is: ", userList)
-    return userList
 
-    # if answers['cecha'] == 'Punktowa':
-    #     print('asdf')
-    # else:
-    #     pass
-
-# IF PUNKTOWA - INPUT X  - list
-
+    """
+    PREP A LIST
+    """
+    def divide_chunks(userList, n):
+        for i in range(0, len(userList), n):
+            yield userList[i:i+n]
+    n = 5
+    cglList = list(divide_chunks(userList, 2))
+    # pktList =
+    
+    if choice == 1:
+        print(pktList)
+        return pktList
+    else:
+        print(cglList)
+        return cglList
 
 
 menu()
-        
-    #     final_list = [] 
-    #     line = int(input("Enter the list of tuples: "))
-    #     print("\n")
-    #     # WHILE LOOP
-    #     while(line != ''): 
-    #         final_list.append(tuple(line.split())) 
-    #         line = input() 
-
-    #     print(final_list)
-    # return final_list
- # else:
-   
-
-
-
-
-
 
 #IF CIĄGŁA, NASTĘPNA - INPUT (X - Y), (X - Y) - dict
 
