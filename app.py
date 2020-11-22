@@ -1,42 +1,52 @@
 import inquirer
 import statistics
+import numpy as np
+from itertools import islice
 
 # CHOOSE 'CECHA CIĄGŁA, CECHA NASTĘPNA, PUNKTOWA
 options = [
     inquirer.List('cecha', 
         message = 'Jaka cecha Xi?',
-        choices = ['Punktowa', 'Ciągła', 'Następna'],
+        choices = ['Punktowa', 'Ciągła'],
     ),
 ]
 answers = inquirer.prompt(options)
 print(answers['cecha'])
+
 # IF PUNKTOWA - INPUT X  - list
 def statMenu():
     """
     Menu with stat options and inputs
     """
-    if answers['cecha'] == 'Punktowa':
-        numList = []
+    n = int(input("Enter the size of the list: "))
+    print("\n")
+    numList = list(int(num) for num in input("Enter the list numbers separated by space ").strip().split())[:n]
 
-        n = int(input("Enter the size of the list: "))
-        print("\n")
-        # COMPREHENSION LIST
-        numList = list(int(num) for num in input("Enter the list numbers separated by space ").strip().split())[:n]
-        print(numList)
+    if answers['cecha'] == 'Punktowa':
+        # numList = list(int(num) for num in input("Enter the list numbers separated by space ").strip().split())[:n]
+        print("User List: ", numList)
         return numList
     else:
-        final_list = [] 
-        line = int(input("Enter the list of tuples: "))
-        print("\n")
-        # WHILE LOOP
-        while(line != ''): 
-            final_list.append(tuple(line.split())) 
-            line = input() 
+        xynumList = iter(numList)
+        xynumList = iter(lambda: tuple(islice(numList, n)), ())
+        print("User List: ", xynumList)
+        return xynumList
+statMenu()
+        
+    #     final_list = [] 
+    #     line = int(input("Enter the list of tuples: "))
+    #     print("\n")
+    #     # WHILE LOOP
+    #     while(line != ''): 
+    #         final_list.append(tuple(line.split())) 
+    #         line = input() 
 
-        print(final_list)
-        return final_list
+    #     print(final_list)
+    # return final_list
+ # else:
+   
 
-class Avg():
+class Average():
     """
     Count avg of pkt or cgl
     """
@@ -47,7 +57,7 @@ class Avg():
     def avgPkt(final_list):
         AvgDataCgl = statistics.mean(final_list)
         return AvgDataCgl
-    
+
 
 
 
