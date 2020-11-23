@@ -1,6 +1,5 @@
 import statistics
 from statistics import stdev
-from app import pktList, cglList
 
 
 def avgPkt(pktList):

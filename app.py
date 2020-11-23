@@ -1,5 +1,8 @@
-import mathfunc
+import numbers
+import statistics
 # CHOOSE 'CECHA CIĄGŁA, CECHA PUNKTOWA'
+
+
 def menu():
     """
     MENU
@@ -14,30 +17,33 @@ def menu():
     """
     input_string = input("Enter a list elements separated by space: ")
     print("\n")
-    userList = input_string.split()
-    print("User list is: ", userList)
+    pktList = input_string.split()
+    print("User list is 'pkt': ", pktList)
+    return choice, pktList
+
+
+def divide_chunks(pktList, n):
     """
-    PREP A LIST
+    PREP A LIST for 'Ciągła'
     """
-
-    def divide_chunks(userList, n):
-        cglList = userList
-        pktList = userList
-        for i in range(0, len(cglList), n):
-            yield cglList[i:i+n]
-        n = 5
-        cglList = list(divide_chunks(cglList, 2))
-        
-        if choice == 1:
-            print(pktList)
-            return pktList
-        else:
-            print(cglList)
-            return cglList
-
-
+    cglList = pktList
+    for i in range(0, len(cglList), n):
+        yield cglList[i:i+n]
+    n = 5
+    cglList = list(divide_chunks(cglList, 2))
+    print("User list is 'cgl': ", cglList)
+    return cglList
+    
+    
+    # if menu.choice == 1:
+    #     print("Prep list: ", pktList)
+    #     return pktList
+    # else:
+    #     print("Prep list: ", cglList)
+    #     return cglList
+    
+    
 menu()
-
 #IF CIĄGŁA, NASTĘPNA - INPUT (X - Y), (X - Y) - dict
 
 # INPUT NUM OF - Ni, CZYLI ILOŚĆ
