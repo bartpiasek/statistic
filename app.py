@@ -1,4 +1,4 @@
-
+import mathfunc
 # CHOOSE 'CECHA CIĄGŁA, CECHA PUNKTOWA'
 def menu():
     """
